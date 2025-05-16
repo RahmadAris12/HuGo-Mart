@@ -66,13 +66,13 @@
             <i class="bi bi-search"></i>
           </a>
         </li><!-- End Search Icon-->
-       
+
 
         <li class="nav-item dropdown pe-3">
 
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
             <img src="assets/img/acc.jpg" alt="Profile" class="rounded-circle">
-         
+
           </a><!-- End Profile Iamge Icon -->
 
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
@@ -80,7 +80,7 @@
               <h6>Rahmad Aris</h6>
               <span>hugo Admin</span>
             </li>
-            
+
 
           </ul><!-- End Profile Dropdown Items -->
         </li><!-- End Profile Nav -->
@@ -97,15 +97,15 @@
 
       <li class="nav-item">
         <a class="nav-link " href="index.php">
-        <i class="bi bi-house-door"></i>
+          <i class="bi bi-house-door"></i>
           <span>Beranda</span>
         </a>
       </li><!-- End Beranda Nav -->
 
-      
+
       <li class="nav-item">
         <a class="nav-link collapsed" href="kategori.php">
-        <i class="bi bi-0-square-fill"></i>
+          <i class="bi bi-0-square-fill"></i>
           <span>Kategori Produk</span>
         </a>
       </li><!-- End Kategori Nav -->
@@ -147,39 +147,39 @@
 
     </ul>
 
-    </aside><!-- End Sidebar-->
+  </aside><!-- End Sidebar-->
 
-<main id="main" class="main">
+  <main id="main" class="main">
 
-  <div class="pagetitle">
-    <h1>Beranda</h1>
-    <nav>
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="index.php">Beranda</a></li>
-        <li class="breadcrumb-item active">Beranda</li>
-      </ol>
-    </nav>
+    <div class="pagetitle">
+      <h1>Beranda</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.php">Beranda</a></li>
+          <li class="breadcrumb-item active">Beranda</li>
+        </ol>
+      </nav>
     </div><!-- End Page Title -->
 
     <div class="row">
-            <div class="col-lg-12">
-                <div class="card">
-                    <div class="card-body">
-                        <a href="t_kategori.php" class="btn btn-primary mt-3">
-                            <i class="bi bi-plus-lg"></i> Tambah Data
-                        </a>
-                    </div>
-                </div>
-            </div>
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-body">
+            <a href="t_kategori.php" class="btn btn-primary mt-3">
+              <i class="bi bi-plus-lg"></i> Tambah Data
+            </a>
+          </div>
         </div>
-        
-          <section class="section">
-            <div class="row">
+      </div>
+    </div>
 
-                <div class="col-lg-12">
+    <section class="section">
+      <div class="row">
 
-                    <div class="card">
-                        <div class="card-body">
+        <div class="col-lg-12">
+
+          <div class="card">
+            <div class="card-body">
 
 
               <!-- Table with stripped rows -->
@@ -192,57 +192,52 @@
                   </tr>
                 </thead>
                 <tbody>
-                    <?php
-                    include "koneksi.php";
-                    $no = 1;
-                    // Cek apakah ada pencarian
-                    $query = isset($_POST['query']) ?
+                  <?php
+                  include "koneksi.php";
+                  $no = 1;
+                  // Cek apakah ada pencarian
+                  $query = isset($_POST['query']) ?
                     mysqli_real_escape_string($koneksi, $_POST['query']) : '';
 
-                    // Query Dasar
-                    $sql_query = "SELECT id_kategori, nm_kategori FROM tb_kategori";
+                  // Query Dasar
+                  $sql_query = "SELECT id_kategori, nm_kategori FROM tb_kategori";
 
-                    // Jika ada pencarian, tambahkan kondisi WHERE
-                    if (!empty($query)) {
-                        $sql_query .= " WHERE nm_kategori LIKE '%$query%'";
+                  // Jika ada pencarian, tambahkan kondisi WHERE
+                  if (!empty($query)) {
+                    $sql_query .= " WHERE nm_kategori LIKE '%$query%'";
+                  }
+                  $sql = mysqli_query($koneksi, $sql_query);
+                  if ($sql_query)
+                    if (mysqli_num_rows($sql) > 0) {
+                      while ($hasil = mysqli_fetch_array($sql)) {
+                  ?>
+                      <td><?php echo $no++; ?></td>
+                      <td><?php echo $hasil['nm_kategori']; ?></td>
+                      <td>
+                        <a href="e_kategori.php?id_kategori=<?php echo $hasil['id_kategori']; ?>" class="btn btn-warning">
+                          <i class="bi bi-pencil-square"></i>
+                        </a>
+                        <a href="h_kategori.php?id_kategori=<?php echo $hasil['id_kategori']; ?>" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">
+                          <i class="bi bi-trash"></i>
+                        </a>
+                      </td>
+                      </tr>
+                    <?php
+                      }
+                    } else {
+                    ?>
+                    <tr>
+                      <td colspan="3" class="text-center">Tidak ada data</td>
+                    </tr>
+                  <?php
                     }
-                    $sql_query= mysqli_query($koneksi, $sql_query);
-                    if ($sql_query) 
-                      if (mysqli_num_rows($sql) > 0) {
-                        while ($hasil = mysqli_fetch_array($sql)) {
-                      ?>
-                        <td><?php echo $no++; ?></td>
-                        <td><?php echo $hasil
-                        ['nama_kategori']; ?></td>
-                        <td>
-                          <a href="e_kategori.php?id_kategori=<?
-                          php echo $hasil
-                          ['id_kategori']; ?>"
-                          class="btn btn-warning">
-                            <i class="bi
-                             bi-pencil-square"></i>
-                          </a>                       
-                          <a href="h_ktg.php?id_ktg=<?php echo $hasil ['id_ktg']; ?>"class="btn btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">
-                            <i class="bi bi-trash"></i>
-                          </a>
-                        </td>  
-                      </tr>
-                      <?php
-                      }
-                   } else {
-                      ?>
-                      <tr>
-                        <td colspan="3" class="text-center">Tidak ada data</td>
-                      </tr>
-                      <?php
-                      }
-                      ?>
-                    </tbody>
+                  ?>
+                </tbody>
               </table>
               <!-- End Table with stripped rows -->
 
-        </div>
-      </div>
+            </div>
+          </div>
     </section>
 
   </main><!-- End #main -->
@@ -250,14 +245,14 @@
   <!-- ======= Footer ======= -->
   <footer id="footer" class="footer">
     <div class="copyright">
-      &copy; Copyright <strong><span>NiceAdmin</span></strong>. All Rights Reserved
+      &copy; Copyright <strong><span>hugo Admin</span></strong>. All Rights Reserved
     </div>
     <div class="credits">
       <!-- All the links in the footer should remain intact. -->
       <!-- You can delete the links only if you purchased the pro version. -->
       <!-- Licensing information: https://bootstrapmade.com/license/ -->
       <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
-      Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+      Designed by <a href="https://bootstrapmade.com/">Rahmad Aris</a>
     </div>
   </footer><!-- End Footer -->
 

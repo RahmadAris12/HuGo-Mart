@@ -1,6 +1,6 @@
 <?php
 include "koneksi.php";
-$id = $_GET['id'];
+$id = $_GET['id_kategori'];
 
 $hapus = mysqli_query($koneksi, "DELETE FROM tb_kategori WHERE id_kategori = 
 '$id'");

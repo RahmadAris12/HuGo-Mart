@@ -1,3 +1,27 @@
+<?php 
+include "koneksi.php";
+
+if (isset($_POST['simpan'])) {
+    $auto = mysqli_query($koneksi, "select max(id_kategori) as max_code from tb_kategori");
+    $hasil = mysqli_fetch_array($auto);
+    $code = $hasil['max_code'];
+    $urutan = (int)substr($code, 1, 3);
+    $urutan++;
+    $huruf = "K";
+    $id_kategori = $huruf . sprintf("%03s", $urutan);
+    $nm_kategori = $_POST['nm_kategori'];
+
+    $query = mysqli_query($koneksi, "INSERT INTO tb_kategori(id_kategori, nm_kategori) VALUES ('$id_kategori', '$nm_kategori')");
+    if ($query) {
+        echo "<script>alert('Data berhasil ditambahkan!')</script>";
+        header("refresh:0, kategori.php");
+    } else {
+        echo "<script>alert('Data gagal ditambahkan!')</script>";
+        header("refresh:0, kategori.php");
+    }
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -70,13 +94,13 @@
         <li class="nav-item dropdown pe-3">
 
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-            <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
+            <img src="assets/img/acc.jpg" alt="Profile" class="rounded-circle">
             <span class="d-none d-md-block dropdown-toggle ps-2">Rahmad Aris</span>
           </a><!-- End Profile Iamge Icon -->
 
 
-          </ul><!-- End Profile Dropdown Items -->
-        </li><!-- End Profile Nav -->
+      </ul><!-- End Profile Dropdown Items -->
+      </li><!-- End Profile Nav -->
 
       </ul>
     </nav><!-- End Icons Navigation -->
@@ -95,13 +119,13 @@
         </a>
       </li><!-- End Dashboard Nav -->
 
-     
 
-      
-      
+
+
+
       <li class="nav-item">
         <a class="nav-link collapsed" href="kategori.php">
-        <i class="bi bi-0-square-fill"></i>
+          <i class="bi bi-0-square-fill"></i>
           <span>Kategori Produk</span>
         </a>
       </li><!-- End Kategori Nav -->
@@ -149,54 +173,33 @@
   <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Form Layouts</h1>
+      <h1>Kategori Produk</h1>
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item">Forms</li>
-          <li class="breadcrumb-item active">Layouts</li>
+          <li class="breadcrumb-item"><a href="index.html">Beranda</a></li>
+          <li class="breadcrumb-item">Kategori Produk</li>
+          <li class="breadcrumb-item active">Tambah</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
-
-            </div>
-          </div>
-
-        </div>
-
+    <section class="section">
+      <div class="row">
         <div class="col-lg-6">
-
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Vertical Form</h5>
-
-              <!-- Vertical Form -->
-              <form class="row g-3">
+              <form class="row g-3 mt-2" method="post">
                 <div class="col-12">
-                  <label for="inputNanme4" class="form-label">Your Name</label>
-                  <input type="text" class="form-control" id="inputNanme4">
-                </div>
-                <div class="col-12">
-                  <label for="inputEmail4" class="form-label">Email</label>
-                  <input type="email" class="form-control" id="inputEmail4">
-                </div>
-                <div class="col-12">
-                  <label for="inputPassword4" class="form-label">Password</label>
-                  <input type="password" class="form-control" id="inputPassword4">
-                </div>
-                <div class="col-12">
-                  <label for="inputAddress" class="form-label">Address</label>
-                  <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+                  <label for="nm_kategori" class="form-label">Nama Kategori</label>
+                  <input type="text" class="form-control" id="nm_kategori" name="nm_kategori" placeholder="Masukkan Nama Kategori Produk">
                 </div>
                 <div class="text-center">
-                  <button type="submit" class="btn btn-primary">Submit</button>
                   <button type="reset" class="btn btn-secondary">Reset</button>
+                  <button type="submit" class="btn btn-primary" name="simpan">Simpan</button>
                 </div>
-              </form><!-- Vertical Form -->
+              </form>
 
             </div>
           </div>
-
         </div>
       </div>
     </section>

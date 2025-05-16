@@ -202,10 +202,10 @@
                                     $query = isset($_POST['query']) ? mysqli_real_escape_string($koneksi, $_GET['query']) : '';
 
                                     //Tambahkan where jika query tidak kosong
-                                    $sql_query = "SELECT tb_produk.id_produk, tb_produk.nm_produk, tb_produk.harga, tb_produk.stok, tb_ktg.nm_ktg, tb_produk.gambar FROM tb_produk LEFT JOIN tb_ktg ON tb_produk.id_ktg = tb_ktg.id_ktg";
+                                    $sql_query = "SELECT tb_produk.id_produk, tb_produk.nm_produk, tb_produk.harga, tb_produk.stok, tb_kategori.nm_kategori, tb_produk.gambar FROM tb_produk LEFT JOIN tb_kategori ON tb_produk.id_kategori = tb_kategori.id_kategori";
 
                                     if (!empty($query)) {
-                                        $sql_query .= " WHERE tb_produk.nm_produk LIKE '%$query%' OR tb_ktg.nm_ktg LIKE '%$query%' OR tb_produk.desk LIKE '%$query%'";
+                                        $sql_query .= " WHERE tb_produk.nm_produk LIKE '%$query%' OR tb_kategori.nm_kategori LIKE '%$query%' OR tb_produk.desk LIKE '%$query%'";
                                     }
                                     $sql= mysqli_query($koneksi, $sql_query);
 

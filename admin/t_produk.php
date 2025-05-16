@@ -15,7 +15,7 @@ if (isset($_POST['simpan'])) {
     $harga = $_POST['harga'];
     $stok = $_POST['stok'];
     $desk = $_POST['desk'];
-    $id_ktg = $_POST['id_ktg'];
+    $id_ktg = $_POST['id_kategori'];
 
     // Upload gambar
     $imgfile = $_FILES['gambar']['name'];
@@ -31,7 +31,7 @@ if (isset($_POST['simpan'])) {
         move_uploaded_file($tmp_file, $dir . $new_image);
 
         // Simpan data produk ke database
-        $query = mysqli_query($koneksi, "INSERT INTO tb_produk (id_produk, nm_produk, harga, stok, desk, id_ktg, 
+        $query = mysqli_query($koneksi, "INSERT INTO tb_produk (id_produk, nm_produk, harga, stok, desk, id_kategori, 
         gambar) VALUES ('$id_produk', '$nm_produk', '$harga', '$stok', '$desk', '$id_ktg', '$imgnewfile')");
 
         if ($query) {

@@ -2,7 +2,7 @@
 include "koneksi.php";
 
 
-$id  = $_GET['id'];
+$id  = $_GET['id_kategori'];
 $sql = mysqli_query($koneksi, "SELECT * FROM tb_kategori WHERE id_kategori = '$id'");
 $data = mysqli_fetch_array($sql);
 
