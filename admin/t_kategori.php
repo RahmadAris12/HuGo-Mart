@@ -1,21 +1,7 @@
-<?php
-session_start();
+<?php 
 include "koneksi.php";
 
-// Cek apakah sudah login
-if (!isset($_SESSION["login"])) {
-    header("Location: login.php");
-    exit;
-}
-
-// Cek apakah status tersedia dan pastikan user adalah admin
-if (!isset($_SESSION["status"]) || $_SESSION["status"] !== "admin") {
-    echo "<script>
-    alert('Akses ditolak! Halaman ini hanya untuk Admin.');
-    window.location.href='login.php';
-  </script>";
-    exit;
-}
+>>>>>>> f56e72ad85480e0c0f21cc6338351c7fcb53e362
 if (isset($_POST['simpan'])) {
     $auto = mysqli_query($koneksi, "select max(id_kategori) as max_code from tb_kategori");
     $hasil = mysqli_fetch_array($auto);
@@ -102,13 +88,11 @@ if (isset($_POST['simpan'])) {
                                 <span>Sign Out</span>
                             </a>
                         </li>
-
                     </ul><!-- End Profile Dropdown Items -->
                 </li><!-- End Profile Nav -->
 
             </ul>
         </nav><!-- End Icons Navigation -->
-
     </header><!-- End Header -->
 
     <!-- ======= Sidebar ======= -->
@@ -123,10 +107,9 @@ if (isset($_POST['simpan'])) {
         </a>
       </li><!-- End Beranda Nav -->
 
-      
       <li class="nav-item">
         <a class="nav-link collapsed" href="kategori.php">
-        <i class="bi bi-0-square-fill"></i>
+          <i class="bi bi-0-square-fill"></i>
           <span>Kategori Produk</span>
         </a>
       </li><!-- End Kategori Nav -->
@@ -181,7 +164,6 @@ if (isset($_POST['simpan'])) {
                 </ol>
             </nav>
         </div><!-- End Page Title -->
-
         <section class="section">
             <div class="row">
                 <div class="col-lg-6">

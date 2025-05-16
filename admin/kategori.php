@@ -70,8 +70,6 @@ if (!isset($_SESSION["status"]) || $_SESSION["status"] !== "admin") {
                 <button type="submit" title="Search"><i class="bi bi-search"></i></button>
             </form>
         </div><!-- End Search Bar -->
-
-
         <nav class="header-nav ms-auto">
             <ul class="d-flex align-items-center">
 
@@ -81,7 +79,6 @@ if (!isset($_SESSION["status"]) || $_SESSION["status"] !== "admin") {
                     </a>
                 </li><!-- End Search Icon-->
                 <li class="nav-item dropdown pe-3">
-
                     <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
                         <img src="assets/img/user.jpg" alt="Profile" class="rounded-circle">
                     </a><!-- End Profile Iamge Icon -->
@@ -113,15 +110,15 @@ if (!isset($_SESSION["status"]) || $_SESSION["status"] !== "admin") {
 
       <li class="nav-item">
         <a class="nav-link " href="index.php">
-        <i class="bi bi-house-door"></i>
+          <i class="bi bi-house-door"></i>
           <span>Beranda</span>
         </a>
       </li><!-- End Beranda Nav -->
 
-      
+
       <li class="nav-item">
         <a class="nav-link collapsed" href="kategori.php">
-        <i class="bi bi-0-square-fill"></i>
+          <i class="bi bi-0-square-fill"></i>
           <span>Kategori Produk</span>
         </a>
       </li><!-- End Kategori Nav -->
@@ -162,8 +159,7 @@ if (!isset($_SESSION["status"]) || $_SESSION["status"] !== "admin") {
       </li><!-- End Pengguna 404 Page Nav -->
         </ul>
 
-    </aside><!-- End Sidebar-->
-
+  </aside><!-- End Sidebar-->
     <main id="main" class="main">
 
         <div class="pagetitle">
@@ -209,6 +205,7 @@ if (!isset($_SESSION["status"]) || $_SESSION["status"] !== "admin") {
 
                                     // Cek apakah ada pencarian
                                     $query = isset($_POST['query']) ? mysqli_real_escape_string($koneksi, $_POST['query']) : '';
+
 
                                     // Query dasar
                                     $sql_query = "SELECT id_kategori, nm_kategori FROM tb_kategori";
@@ -268,19 +265,6 @@ if (!isset($_SESSION["status"]) || $_SESSION["status"] !== "admin") {
             Designed by <a href="https://www.instagram.com/rahmadaris1?igsh=MXVvb2s4ZWVneGxieQ==" target="_blank">Rahmad Aris</a>
         </div>
     </footer><!-- End Footer -->
-
-    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
-    <!-- Vendor JS Files -->
-    <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
-    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/vendor/chart.js/chart.umd.js"></script>
-    <script src="assets/vendor/echarts/echarts.min.js"></script>
-    <script src="assets/vendor/quill/quill.min.js"></script>
-    <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
-    <script src="assets/vendor/tinymce/tinymce.min.js"></script>
-    <script src="assets/vendor/php-email-form/validate.js"></script>
-
     <!-- Template Main JS File -->
     <script src="assets/js/main.js"></script>
 

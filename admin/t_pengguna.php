@@ -1,22 +1,5 @@
 <?php
-session_start();
 include "koneksi.php";
-
-// Cek apakah sudah login
-if (!isset($_SESSION["login"])) {
-    header("Location: login.php");
-    exit;
-}
-
-// Cek apakah status tersedia dan pastikan user adalah admin
-if (!isset($_SESSION["status"]) || $_SESSION["status"] !== "admin") {
-    echo "<script>
-    alert('Akses ditolak! Halaman ini hanya untuk Admin.');
-    window.location.href='login.php';
-  </script>";
-    exit;
-}
-
 if (isset($_POST['simpan'])) {
     // Ambil ID terakhir dari tb_user
     $auto = mysqli_query($koneksi, "SELECT MAX(id_user) AS max_code FROM tb_user");
@@ -48,15 +31,13 @@ if (isset($_POST['simpan'])) {
     }
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
-    <title>Pengguna - Furnimart Admin</title>
+    <title>Pengguna - hugo Admin</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -89,7 +70,7 @@ if (isset($_POST['simpan'])) {
         <div class="d-flex align-items-center justify-content-between">
             <a href="index.php" class="logo d-flex align-items-center">
                 <img src="assets/img/logo.png" alt="">
-                <span class="d-none d-lg-block">Furnimart</span>
+                <span class="d-none d-lg-block">hugo</span>
             </a>
             <i class="bi bi-list toggle-sidebar-btn"></i>
         </div><!-- End Logo -->
@@ -100,7 +81,8 @@ if (isset($_POST['simpan'])) {
                 <li class="nav-item dropdown pe-3">
 
                     <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-                        <img src="assets/img/user.jpg" alt="Profile" class="rounded-circle">
+                        <img src="assets/img/acc.jpg" alt="Profile" class="rounded-circle">
+                        <!-- profile-img.jpg diganti nama file gambar kalian -->
                     </a><!-- End Profile Iamge Icon -->
 
                     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
@@ -240,10 +222,10 @@ if (isset($_POST['simpan'])) {
     <!-- ======= Footer ======= -->
     <footer id="footer" class="footer">
         <div class="copyright">
-            &copy; Copyright <strong><span>Furnimart</span></strong>. All Rights Reserved
+            &copy; Copyright <strong><span>hugo</span></strong>. All Rights Reserved
         </div>
         <div class="credits">
-            Designed by <a href="https://instagram.com/dea.salsa.503/" target="_blank">Dea Salsabilla</a>
+            Designed by <a href="link ig">Rahmadd Aris</a>
         </div>
     </footer><!-- End Footer -->
 

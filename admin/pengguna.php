@@ -24,7 +24,6 @@ if (!isset($_SESSION["status"]) || $_SESSION["status"] !== "admin") {
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
     <title>Pengguna- hugo Admin</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
@@ -84,7 +83,8 @@ if (!isset($_SESSION["status"]) || $_SESSION["status"] !== "admin") {
                 <li class="nav-item dropdown pe-3">
 
                     <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-                        <img src="assets/img/user.jpg" alt="Profile" class="rounded-circle">
+                        <img src="assets/img/acc.jpg" alt="Profile" class="rounded-circle">
+                        <!-- profile-img.jpg diganti dengan foto kalian -->
                     </a><!-- End Profile Iamge Icon -->
 
                     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
@@ -193,6 +193,7 @@ if (!isset($_SESSION["status"]) || $_SESSION["status"] !== "admin") {
 
         <section class="section">
             <div class="row">
+
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-body">
