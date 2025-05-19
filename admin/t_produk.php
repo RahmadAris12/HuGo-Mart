@@ -15,31 +15,33 @@ if (isset($_POST['simpan'])) {
     $harga = $_POST['harga'];
     $stok = $_POST['stok'];
     $desk = $_POST['desk'];
-    $id_ktg = $_POST['id_kategori'];
+    $id_kategori = $_POST['id_kategori'];
 
-    // Upload gambar
+    // Upload Gambar
     $imgfile = $_FILES['gambar']['name'];
     $tmp_file = $_FILES['gambar']['tmp_name'];
     $extension = strtolower(pathinfo($imgfile, PATHINFO_EXTENSION));
 
     $dir = "produk_img/"; // Direktori penyimpanan gambar
-    $allowed_extensions = array('jpg', 'jpeg', 'png', 'webp');
+    $allowed_extensions = array("jpg", "jpeg", "png", "webp");
 
+    if (!in_array($extension, $allowed_extensions)) {
+        echo "<script>alert('Format tidak valid. Hanya jpg, jpeg, png, dan webp yang diperbolehkan.');</script>";
+    } else {
+        // Rename file gambar agar unik
+        $imgnewfile = md5(time() . $imgfile) . "." . $extension;
+        move_uploaded_file($tmp_file, $dir . $imgnewfile);
 
-    if (in_array($extension, $allowed_extensions)) {
-        $new_image = $kode_produk . '.' . $extension;
-        move_uploaded_file($tmp_file, $dir . $new_image);
-
-        // Simpan data produk ke database
-        $query = mysqli_query($koneksi, "INSERT INTO tb_produk (id_produk, nm_produk, harga, stok, desk, id_kategori, 
-        gambar) VALUES ('$id_produk', '$nm_produk', '$harga', '$stok', '$desk', '$id_ktg', '$imgnewfile')");
+        // Simpan data ke database
+        $query = mysqli_query($koneksi, "INSERT INTO tb_produk (id_produk, nm_produk, harga, stok, desk, id_kategori, gambar) 
+                                         VALUES ('$kode_produk', '$nm_produk', '$harga', '$stok', '$desk', '$id_kategori', '$imgnewfile')");
 
         if ($query) {
-            echo "<script>alert('produk Berhasil Disimpan!');</script>";
-            header("refresh:0; produk.php");
+            echo "<script>alert('Produk berhasil ditambahkan!');</script>";
+            header("refresh:0, produk.php");
         } else {
             echo "<script>alert('Gagal menambahkan produk!');</script>";
-            header("refresh:0; produk.php");
+            header("refresh:0, produk.php");
         }
     }
 }
@@ -222,13 +224,14 @@ if (isset($_POST['simpan'])) {
                                     <textarea class="form-control" id="desk" name="desk" placeholder="Masukkan Deskripsi Produk" required></textarea>
                                 </div>
                                 <div class="col-12">
-                                    <label for="id_ktg" class="form-label">Kategori</label>
-                                    <select class="form-control" id="id_ktg" name="id_ktg" required>
+                                    <label for="id_kategori" class="form-label">Kategori</label>
+                                    <select class="form-control" id="id_kategori" name="id_kategori" required>
                                         <option value="">-- Pilih Kategori --</option>
                                         <?php
+                                        include "koneksi.php";
                                         $query = mysqli_query($koneksi, "SELECT * FROM tb_ktg"); 
                                         while ($kategori = mysqli_fetch_array($query)) {
-                                            echo "<option value='{$kategori['id_ktg']}'>{$kategori['nm_ktg']}</option>";
+                                            echo "<option value='{$kategori['id_kategori']}'>{$kategori['nm_kategori']}</option>";
                                         }
                                         ?>]
                                     </select>
@@ -255,10 +258,10 @@ if (isset($_POST['simpan'])) {
     <!-- ======= Footer ======= -->
     <footer id="footer" class="footer">
         <div class="copyright">
-            &copy; Copyright <strong><span>Nama Website</span></strong>. All Rights Reserved
+            &copy; Copyright <strong><span>hugo</span></strong>. All Rights Reserved
         </div>
         <div class="credits">
-            Designed by <a href="link ig">Nama Kalian</a>
+            Designed by <a href="https://www.instagram.com/rahmadaris1?igsh=MXVvb2s4ZWVneGxieQ==">Rahmad Aris</a>
         </div>
     </footer><!-- End Footer -->
 

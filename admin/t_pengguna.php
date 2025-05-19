@@ -225,7 +225,7 @@ if (isset($_POST['simpan'])) {
             &copy; Copyright <strong><span>hugo</span></strong>. All Rights Reserved
         </div>
         <div class="credits">
-            Designed by <a href="link ig">Rahmadd Aris</a>
+            Designed by <a href="https://www.instagram.com/rahmadaris1?igsh=MXVvb2s4ZWVneGxieQ==">Rahmadd Aris</a>
         </div>
     </footer><!-- End Footer -->
 

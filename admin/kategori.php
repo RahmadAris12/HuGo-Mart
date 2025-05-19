@@ -1,22 +1,4 @@
-<?php
-session_start();
-include "koneksi.php";
 
-// Cek apakah sudah login
-if (!isset($_SESSION["login"])) {
-    header("Location: login.php");
-    exit;
-}
-
-// Cek apakah status tersedia dan pastikan user adalah admin
-if (!isset($_SESSION["status"]) || $_SESSION["status"] !== "admin") {
-    echo "<script>
-    alert('Akses ditolak! Halaman ini hanya untuk Admin.');
-    window.location.href='login.php';
-  </script>";
-    exit;
-}
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -80,7 +62,7 @@ if (!isset($_SESSION["status"]) || $_SESSION["status"] !== "admin") {
                 </li><!-- End Search Icon-->
                 <li class="nav-item dropdown pe-3">
                     <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-                        <img src="assets/img/user.jpg" alt="Profile" class="rounded-circle">
+                        <img src="assets/img/acc.jpg" alt="Profile" class="rounded-circle">
                     </a><!-- End Profile Iamge Icon -->
 
                     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
@@ -103,60 +85,58 @@ if (!isset($_SESSION["status"]) || $_SESSION["status"] !== "admin") {
 
     </header><!-- End Header -->
 
-    <!-- ======= Sidebar ======= -->
-    <aside id="sidebar" class="sidebar">
+   <!-- ======= Sidebar ======= -->
+  <aside id="sidebar" class="sidebar">
 
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item">
-        <a class="nav-link " href="index.php">
+        <a class="nav-link" href="index.php">
           <i class="bi bi-house-door"></i>
           <span>Beranda</span>
         </a>
       </li><!-- End Beranda Nav -->
 
-
       <li class="nav-item">
         <a class="nav-link collapsed" href="kategori.php">
-          <i class="bi bi-0-square-fill"></i>
+          <i class="bi bi-tags"></i>
           <span>Kategori Produk</span>
         </a>
-      </li><!-- End Kategori Nav -->
+      </li><!-- End Kategori Produk Page Nav -->
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="produk.php">
-          <i class="bi bi-question-circle"></i>
+          <i class="bi bi-shop"></i>
           <span>Produk</span>
         </a>
       </li><!-- End Produk Page Nav -->
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="keranjang.php">
-          <i class="bi bi-envelope"></i>
+          <i class="bi bi-cart"></i>
           <span>Keranjang</span>
         </a>
-      </li><!-- End Contact Page Nav -->
+      </li><!-- End Keranjang Page Nav -->
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="transaksi.php">
-          <i class="bi bi-card-list"></i>
+          <i class="bi bi-receipt"></i>
           <span>Transaksi</span>
         </a>
       </li><!-- End Transaksi Page Nav -->
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="laporan.php">
-          <i class="bi bi-box-arrow-in-right"></i>
+          <i class="bi bi-file-earmark-bar-graph"></i>
           <span>Laporan</span>
         </a>
-      </li><!-- End laporan Page Nav -->
-
+      </li><!-- End Laporan Page Nav -->
       <li class="nav-item">
         <a class="nav-link collapsed" href="pengguna.php">
-          <i class="bi bi-dash-circle"></i>
+          <i class="bi bi-people"></i>
           <span>Pengguna</span>
         </a>
-      </li><!-- End Pengguna 404 Page Nav -->
+      </li><!-- End Pengguna Page Nav -->
         </ul>
 
   </aside><!-- End Sidebar-->
@@ -199,6 +179,7 @@ if (!isset($_SESSION["status"]) || $_SESSION["status"] !== "admin") {
                                     </tr>
                                 </thead>
                                 <tbody>
+
                                     <?php
                                     include "koneksi.php";
                                     $no = 1;
@@ -208,11 +189,11 @@ if (!isset($_SESSION["status"]) || $_SESSION["status"] !== "admin") {
 
 
                                     // Query dasar
-                                    $sql_query = "SELECT id_kategori, nm_kategori FROM tb_kategori";
+                                    $sql_query = "SELECT id_kategori, nm_kategori FROM tb_ktg";
 
                                     // Jika ada pencarian, tambahkan kondisi WHERE
                                     if (!empty($query)) {
-                                        $sql_query .= " WHERE nm_kategori LIKE '%$query%'";
+                                        $sql_query = " WHERE nm_kategori LIKE '%$query%'";
                                     }
 
                                     $sql = mysqli_query($koneksi, $sql_query);
@@ -225,8 +206,7 @@ if (!isset($_SESSION["status"]) || $_SESSION["status"] !== "admin") {
                                                 <td><?php echo $hasil['nm_kategori']; ?></td>
                                                 <td>
                                                     <a href="e_kategori.php?id=<?php echo $hasil['id_kategori']; ?>" class="btn btn-warning">
-                                                        <i class="bi bi-pencil-square"></i>
-                                                    </a>
+                                                        <i class="bi bi-pencil-square"></i></a>
                                                     <a href="h_kategori.php?id=<?php echo $hasil['id_kategori']; ?>" class="btn btn-danger" onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data?')">
                                                         <i class="bi bi-trash"></i>
                                                     </a>

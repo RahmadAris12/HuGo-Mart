@@ -1,9 +1,8 @@
 <?php 
 include "koneksi.php";
 
->>>>>>> f56e72ad85480e0c0f21cc6338351c7fcb53e362
 if (isset($_POST['simpan'])) {
-    $auto = mysqli_query($koneksi, "select max(id_kategori) as max_code from tb_kategori");
+    $auto = mysqli_query($koneksi, "select max(id_kategori) as max_code from tb_ktg");
     $hasil = mysqli_fetch_array($auto);
     $code = $hasil['max_code'];
     $urutan = (int)substr($code, 1, 3);
@@ -12,7 +11,7 @@ if (isset($_POST['simpan'])) {
     $id_kategori = $huruf . sprintf("%03s", $urutan);
     $nm_kategori = $_POST['nm_kategori'];
 
-    $query = mysqli_query($koneksi, "INSERT INTO tb_kategori(id_kategori, nm_kategori) VALUES ('$id_kategori', '$nm_kategori')");
+    $query = mysqli_query($koneksi, "INSERT INTO tb_ktg(id_kategori, nm_kategori) VALUES ('$id_kategori', '$nm_kategori')");
     if ($query) {
         echo "<script>alert('Data berhasil ditambahkan!')</script>";
         header("refresh:0, kategori.php");
@@ -74,7 +73,7 @@ if (isset($_POST['simpan'])) {
                 <li class="nav-item dropdown pe-3">
 
                     <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-                        <img src="assets/img/user.jpg" alt="Profile" class="rounded-circle">
+                        <img src="assets/img/acc.jpg" alt="Profile" class="rounded-circle">
                     </a><!-- End Profile Iamge Icon -->
 
                     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
