@@ -25,7 +25,7 @@ if (!isset($_SESSION["status"]) || $_SESSION["status"] !== "admin") {
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Produk - hugo Admin</title>
+    <title>Produk - Hugo-Mart Admin</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -58,8 +58,8 @@ if (!isset($_SESSION["status"]) || $_SESSION["status"] !== "admin") {
 
         <div class="d-flex align-items-center justify-content-between">
             <a href="index.php" class="logo d-flex align-items-center">
-                <img src="assets/img/acc.png" alt="">
-                <span class="d-none d-lg-block">hugo</span>
+                <img src="assets/img/logo.png" alt="">
+                <span class="d-none d-lg-block">Hugo-Mart</span>
             </a>
             <i class="bi bi-list toggle-sidebar-btn"></i>
         </div><!-- End Logo -->
@@ -89,7 +89,7 @@ if (!isset($_SESSION["status"]) || $_SESSION["status"] !== "admin") {
 
                     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                         <li class="dropdown-header">
-                            <h6><?php echo isset($_SESSION['username']) ? htmlspecialchars($_SESSION['username']) : 'Guest'; ?></h6>
+                            <h6><?php echo isset($_SESSION['username']) ? htmlspecialchars($_SESSION['username']) : 'Aris'; ?></h6>
                             <span>Admin</span>
                         </li>
                         <li>
@@ -107,7 +107,7 @@ if (!isset($_SESSION["status"]) || $_SESSION["status"] !== "admin") {
 
     </header><!-- End Header -->
 
-    <!-- ======= Sidebar ======= -->
+        <!-- ======= Sidebar ======= -->
     <aside id="sidebar" class="sidebar">
 
         <ul class="sidebar-nav" id="sidebar-nav">
@@ -214,15 +214,10 @@ if (!isset($_SESSION["status"]) || $_SESSION["status"] !== "admin") {
                                     // Ambil keyword pencarian dari GET
                                     $query = isset($_GET['query']) ? mysqli_real_escape_string($koneksi, $_GET['query']) : '';
 
-                                    // Tambahkan WHERE jika query tidak kosong
-                                    $sql_query = "SELECT tb_produk.*, tb_ktg.nm_kategori 
-              FROM tb_produk 
-              LEFT JOIN tb_ktg ON tb_produk.id_kategori = tb_ktg.id_kategori";
-
+                                    // Tambahkan Where jika Query tidak kosong
+                                    $sql_query = "SELECT tb_produk.*, tb_ktg.nm_kategori FROM tb_produk LEFT JOIN tb_ktg ON tb_produk.id_kategori = tb_ktg.id_kategori";
                                     if (!empty($query)) {
-                                        $sql_query .= " WHERE tb_produk.nm_produk LIKE '%$query%' 
-                    OR tb_kategori.nm_kategori LIKE '%$query%'
-                    OR tb_produk.desk LIKE '%$query%'";
+                                        $sql_query .= " WHERE tb_produk.nm_produk LIKE '%$query%' OR tb_ktg.nm_kategori LIKE '%$query%' OR tb_produk.desk LIKE '%$query%'";
                                     }
 
                                     $sql = mysqli_query($koneksi, $sql_query);
@@ -279,10 +274,10 @@ if (!isset($_SESSION["status"]) || $_SESSION["status"] !== "admin") {
     <!-- ======= Footer ======= -->
     <footer id="footer" class="footer">
         <div class="copyright">
-            &copy; Copyright <strong><span>hugo</span></strong>. All Rights Reserved
+            &copy; Copyright <strong><span>Hugo-Mart</span></strong>. All Rights Reserved
         </div>
         <div class="credits">
-            Designed by <a href="https://instagram.com/meaffq/" target="_blank">Rahmad Aris</a>
+           Designed by <a href="https://www.instagram.com/rahmadaris1?igsh=MWh5NWxrcXdoeTV5Zw==" target="blank">rahmadaris1</a>
         </div>
     </footer><!-- End Footer -->
 

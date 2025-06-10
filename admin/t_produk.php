@@ -8,7 +8,7 @@ $code = $hasil['max_code'];
 $urutan = (int)substr($code, 1, 3);
 $urutan++;
 $huruf = "P";
-$kode_produk = $huruf . sprintf("%03s", $urutan);
+$id_produk = $huruf . sprintf("%03s", $urutan);
 
 if (isset($_POST['simpan'])) {
     $nm_produk = $_POST['nm_produk'];
@@ -17,25 +17,24 @@ if (isset($_POST['simpan'])) {
     $desk = $_POST['desk'];
     $id_kategori = $_POST['id_kategori'];
 
-    // Upload Gambar
+    //upload gambar
     $imgfile = $_FILES['gambar']['name'];
-    $tmp_file = $_FILES['gambar']['tmp_name'];
+    $tmpfile = $_FILES['gambar']['tmp_name'];
     $extension = strtolower(pathinfo($imgfile, PATHINFO_EXTENSION));
 
     $dir = "produk_img/"; // Direktori penyimpanan gambar
     $allowed_extensions = array("jpg", "jpeg", "png", "webp");
-
+    
     if (!in_array($extension, $allowed_extensions)) {
-        echo "<script>alert('Format tidak valid. Hanya jpg, jpeg, png, dan webp yang diperbolehkan.');</script>";
+        echo "<script>alert('Format tidak valid. Hanya JPG, JPEG, PNG, dan WEBP yang diperbolehkan.');</script>";
     } else {
         // Rename file gambar agar unik
         $imgnewfile = md5(time() . $imgfile) . "." . $extension;
-        move_uploaded_file($tmp_file, $dir . $imgnewfile);
+        move_uploaded_file($tmpfile, $dir . $imgnewfile);
 
-        // Simpan data ke database
-        $query = mysqli_query($koneksi, "INSERT INTO tb_produk (id_produk, nm_produk, harga, stok, desk, id_kategori, gambar) 
-                                         VALUES ('$kode_produk', '$nm_produk', '$harga', '$stok', '$desk', '$id_kategori', '$imgnewfile')");
-
+        //Simpan data ke database
+        $query = mysqli_query($koneksi, "INSERT INTO tb_produk (id_produk, nm_produk, harga, stok, desk, id_kategori, gambar) VALUES ('$id_produk', '$nm_produk', '$harga', '$stok', '$desk', '$id_kategori', '$imgnewfile')");
+        
         if ($query) {
             echo "<script>alert('Produk berhasil ditambahkan!');</script>";
             header("refresh:0, produk.php");
@@ -46,8 +45,6 @@ if (isset($_POST['simpan'])) {
     }
 }
 ?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -55,7 +52,7 @@ if (isset($_POST['simpan'])) {
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Produk - hugo Admin</title>
+    <title>Produk - Hugo-Mart Admin</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -88,7 +85,7 @@ if (isset($_POST['simpan'])) {
         <div class="d-flex align-items-center justify-content-between">
             <a href="index.php" class="logo d-flex align-items-center">
                 <img src="assets/img/logo.png" alt="">
-                <span class="d-none d-lg-block">hugo</span>
+                <span class="d-none d-lg-block">Hugo-Mart</span>
             </a>
             <i class="bi bi-list toggle-sidebar-btn"></i>
         </div><!-- End Logo -->
@@ -99,13 +96,13 @@ if (isset($_POST['simpan'])) {
                 <li class="nav-item dropdown pe-3">
 
                     <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-                        <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
+                        <img src="assets/img/acc.jpg" alt="Profile" class="rounded-circle">
                         <!-- profile-img.jpg diganti nama file gambar kalian -->
                     </a><!-- End Profile Iamge Icon -->
 
                     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                         <li class="dropdown-header">
-                            <h6>Rahmad aris</h6>
+                            <h6>FannKyoo</h6>
                             <span>Admin</span>
                         </li>
                         <li>
@@ -229,11 +226,11 @@ if (isset($_POST['simpan'])) {
                                         <option value="">-- Pilih Kategori --</option>
                                         <?php
                                         include "koneksi.php";
-                                        $query = mysqli_query($koneksi, "SELECT * FROM tb_ktg"); 
+                                        $query = mysqli_query($koneksi, "SELECT * FROM tb_ktg");
                                         while ($kategori = mysqli_fetch_array($query)) {
-                                            echo "<option value='{$kategori['id_kategori']}'>{$kategori['nm_kategori']}</option>";
+                                            echo "<option value='{$kategori['id_kategori']}'>$kategori[nm_kategori]</option>";
                                         }
-                                        ?>]
+                                        ?> 
                                     </select>
                                 </div>
                                 <div class="col-12">
@@ -258,10 +255,10 @@ if (isset($_POST['simpan'])) {
     <!-- ======= Footer ======= -->
     <footer id="footer" class="footer">
         <div class="copyright">
-            &copy; Copyright <strong><span>hugo</span></strong>. All Rights Reserved
+            &copy; Copyright <strong><span>Hugo-Mart</span></strong>. All Rights Reserved
         </div>
         <div class="credits">
-            Designed by <a href="https://www.instagram.com/rahmadaris1?igsh=MXVvb2s4ZWVneGxieQ==">Rahmad Aris</a>
+            Designed by <a href="https://www.instagram.com/rahmadaris1?igsh=MWh5NWxrcXdoeTV5Zw==" target="blank">rahmadaris1</a>
         </div>
     </footer><!-- End Footer -->
 

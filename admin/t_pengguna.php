@@ -31,13 +31,15 @@ if (isset($_POST['simpan'])) {
     }
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>Pengguna - hugo Admin</title>
+
+    <title>Pengguna - Hugo-Mart Admin</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -70,7 +72,7 @@ if (isset($_POST['simpan'])) {
         <div class="d-flex align-items-center justify-content-between">
             <a href="index.php" class="logo d-flex align-items-center">
                 <img src="assets/img/logo.png" alt="">
-                <span class="d-none d-lg-block">hugo</span>
+                <span class="d-none d-lg-block">Hugo-Mart</span>
             </a>
             <i class="bi bi-list toggle-sidebar-btn"></i>
         </div><!-- End Logo -->
@@ -82,7 +84,6 @@ if (isset($_POST['simpan'])) {
 
                     <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
                         <img src="assets/img/acc.jpg" alt="Profile" class="rounded-circle">
-                        <!-- profile-img.jpg diganti nama file gambar kalian -->
                     </a><!-- End Profile Iamge Icon -->
 
                     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
@@ -105,60 +106,58 @@ if (isset($_POST['simpan'])) {
 
     </header><!-- End Header -->
 
-    <!-- ======= Sidebar ======= -->
-     <aside id="sidebar" class="sidebar">
+       <!-- ======= Sidebar ======= -->
+    <aside id="sidebar" class="sidebar">
 
-    <ul class="sidebar-nav" id="sidebar-nav">
+        <ul class="sidebar-nav" id="sidebar-nav">
 
-      <li class="nav-item">
-        <a class="nav-link " href="index.php">
-        <i class="bi bi-house-door"></i>
-          <span>Beranda</span>
-        </a>
-      </li><!-- End Beranda Nav -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="index.php">
+                    <i class="bi bi-house-door"></i>
+                    <span>Beranda</span>
+                </a>
+            </li><!-- End Beranda Nav -->
 
-      
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="kategori.php">
-        <i class="bi bi-0-square-fill"></i>
-          <span>Kategori Produk</span>
-        </a>
-      </li><!-- End Kategori Nav -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="kategori.php">
+                    <i class="bi bi-tags"></i>
+                    <span>Kategori Produk</span>
+                </a>
+            </li><!-- End Kategori Produk Page Nav -->
 
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="produk.php">
-          <i class="bi bi-question-circle"></i>
-          <span>Produk</span>
-        </a>
-      </li><!-- End Produk Page Nav -->
+            <li class="nav-item">
+                <a class="nav-link" href="produk.php">
+                    <i class="bi bi-shop"></i>
+                    <span>Produk</span>
+                </a>
+            </li><!-- End Produk Page Nav -->
 
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="keranjang.php">
-          <i class="bi bi-envelope"></i>
-          <span>Keranjang</span>
-        </a>
-      </li><!-- End Contact Page Nav -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="keranjang.php">
+                    <i class="bi bi-cart"></i>
+                    <span>Keranjang</span>
+                </a>
+            </li><!-- End Keranjang Page Nav -->
 
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="transaksi.php">
-          <i class="bi bi-card-list"></i>
-          <span>Transaksi</span>
-        </a>
-      </li><!-- End Transaksi Page Nav -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="transaksi.php">
+                    <i class="bi bi-receipt"></i>
+                    <span>Transaksi</span>
+                </a>
+            </li><!-- End Transaksi Page Nav -->
 
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="laporan.php">
-          <i class="bi bi-box-arrow-in-right"></i>
-          <span>Laporan</span>
-        </a>
-      </li><!-- End laporan Page Nav -->
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="pengguna.php">
-          <i class="bi bi-dash-circle"></i>
-          <span>Pengguna</span>
-        </a>
-      </li><!-- End Pengguna 404 Page Nav -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="laporan.php">
+                    <i class="bi bi-file-earmark-bar-graph"></i>
+                    <span>Laporan</span>
+                </a>
+            </li><!-- End Laporan Page Nav -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="pengguna.php">
+                    <i class="bi bi-people"></i>
+                    <span>Pengguna</span>
+                </a>
+            </li><!-- End Pengguna Page Nav -->
         </ul>
 
     </aside><!-- End Sidebar-->
@@ -222,10 +221,10 @@ if (isset($_POST['simpan'])) {
     <!-- ======= Footer ======= -->
     <footer id="footer" class="footer">
         <div class="copyright">
-            &copy; Copyright <strong><span>hugo</span></strong>. All Rights Reserved
+            &copy; Copyright <strong><span>RahmadAris12</span></strong>. All Rights Reserved
         </div>
         <div class="credits">
-            Designed by <a href="https://www.instagram.com/rahmadaris1?igsh=MXVvb2s4ZWVneGxieQ==">Rahmadd Aris</a>
+            Designed by <a href="https://instagram.com/dea.salsa.503/" target="_blank">rahmadaris1</a>
         </div>
     </footer><!-- End Footer -->
 

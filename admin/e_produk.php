@@ -60,7 +60,7 @@ if (isset($_POST['update'])) {
     }
 
     // Update data ke database
-    $query = mysqli_query($koneksi, "UPDATE tb_produk SET nm_produk='$nm_produk', harga='$harga', stok='$stok', ket='$desk', id_kategori='$id_kategori', gambar='$imgnewfile' WHERE id_produk='$id_produk'");
+    $query = mysqli_query($koneksi, "UPDATE tb_produk SET nm_produk='$nm_produk', harga='$harga', stok='$stok', desk='$desk', id_kategori='$id_kategori', gambar='$imgnewfile' WHERE id_produk='$id_produk'");
 
     if ($query) {
         echo "<script>alert('Produk berhasil diperbarui!');</script>";
@@ -78,7 +78,7 @@ if (isset($_POST['update'])) {
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Produk - hugo Admin</title>
+    <title>Produk - Hugo-Mart Admin</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -111,7 +111,7 @@ if (isset($_POST['update'])) {
         <div class="d-flex align-items-center justify-content-between">
             <a href="index.php" class="logo d-flex align-items-center">
                 <img src="assets/img/logo.png" alt="">
-                <span class="d-none d-lg-block">hugo</span>
+                <span class="d-none d-lg-block">Hugo-Mart</span>
             </a>
             <i class="bi bi-list toggle-sidebar-btn"></i>
         </div><!-- End Logo -->
@@ -129,7 +129,7 @@ if (isset($_POST['update'])) {
                 <li class="nav-item dropdown pe-3">
 
                     <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-                        <img src="assets/img/user.jpg" alt="Profile" class="rounded-circle">
+                        <img src="assets/img/acc.jpg" alt="Profile" class="rounded-circle">
                     </a><!-- End Profile Iamge Icon -->
 
                     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
@@ -157,7 +157,7 @@ if (isset($_POST['update'])) {
 
     </header><!-- End Header -->
 
-    <!-- ======= Sidebar ======= -->
+       <!-- ======= Sidebar ======= -->
     <aside id="sidebar" class="sidebar">
 
         <ul class="sidebar-nav" id="sidebar-nav">
@@ -247,16 +247,16 @@ if (isset($_POST['update'])) {
                                 </div>
                                 <div class="col-12">
                                     <label for="desk" class="form-label">Deskripsi</label>
-                                    <textarea class="form-control" id="desk" name="desk" placeholder="Masukkan Deskripsi Produk" required><?php echo $data['ket']; ?></textarea>
+                                    <textarea class="form-control" id="desk" name="desk" placeholder="Masukkan Deskripsi Produk" required><?php echo $data['desk']; ?></textarea>
                                 </div>
                                 <div class="col-12">
                                     <label for="id_kategori" class="form-label">Kategori</label>
                                     <select class="form-control" id="id_kategori" name="id_kategori" required>
                                         <option value="">-- Pilih Kategori --</option>
                                         <?php
-                                        $query_kategori = mysqli_query($koneksi, "SELECT * FROM tb_kategori");
+                                        $query_kategori = mysqli_query($koneksi, "SELECT * FROM tb_ktg");
                                         while ($kategori = mysqli_fetch_array($query_kategori)) {
-                                            $selected = ($kategori['id_kategori'] == $data['id_kategori']) ? 'selected' : '';
+                                            $selected = ($kategori['id_ktategori'] == $data['id_kategori']) ? 'selected' : '';
                                             echo "<option value='{$kategori['id_kategori']}' $selected>{$kategori['nm_kategori']}</option>";
                                         }
                                         ?>
@@ -286,10 +286,10 @@ if (isset($_POST['update'])) {
     <!-- ======= Footer ======= -->
     <footer id="footer" class="footer">
         <div class="copyright">
-            &copy; Copyright <strong><span>hugo</span></strong>. All Rights Reserved
+            &copy; Copyright <strong><span>RahmadAris12</span></strong>. All Rights Reserved
         </div>
         <div class="credits">
-            Designed by <a href="https://instagram.com/meaffq/" target="_blank">Rahmad Aris</a>
+            Designed by <a href="https://www.instagram.com/rahmadaris1?igsh=MWh5NWxrcXdoeTV5Zw==" target="_blank">rahmadaris1</a>
         </div>
     </footer><!-- End Footer -->
 
